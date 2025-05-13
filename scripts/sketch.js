@@ -1,19 +1,47 @@
 const canvas = document.querySelector(".canvas");
-const CANVAS_SIZE = 16;
-const SIZE_FACTOR = 16; // change it so it recives input from webpage
 
-for (let i = 0; i < CANVAS_SIZE * SIZE_FACTOR; i++) {
-    let tile = document.createElement("div");
+function generateSketchPad(size_factor = 16) {
+    canvas.innerHTML = ""; // clear previous tiles
 
-    // tile.textContent += i + 1;
+    // canvas size
+    const canvasWidth = canvas.clientWidth;
+    const canvasHeight = canvas.clientHeight;
 
-    tile.addEventListener("mouseenter", () => {
-        tile.classList.add("hover");
-    });
-    tile.addEventListener("mouseleave", () => {
-        setTimeout(() => {
-            tile.classList.remove("hover");
-        }, 1500);
-    });
-    canvas.appendChild(tile);
+    // tile length
+    const tileWidth = canvasWidth / size_factor;
+    const tileHeight = canvasHeight / size_factor;
+
+    for (let i = 0; i < size_factor * size_factor; i++) {
+        let tile = document.createElement("div");
+        tile.style.width = `${tileWidth}px`;
+        tile.style.height = `${tileHeight}px`;
+
+        // tile.textContent += i + 1; // commented out because the numbers are a debugging tool which helps you see where the boxes are
+
+        tile.addEventListener("mouseenter", () => {
+            tile.classList.add("hover");
+        });
+        tile.addEventListener("mouseleave", () => {
+            setTimeout(() => {
+                tile.classList.remove("hover");
+            }, 3500);
+        });
+        canvas.appendChild(tile);
+    }
 }
+
+const sizeBtn = document.querySelector(".sizeBtn");
+sizeBtn.addEventListener("click", () => {
+    let size = Number(prompt("Enter a number between 1-100"));
+    while (isNaN(size) || size < 1 || size > 100) {
+        size = Number(prompt("Invalid. Enter a number between 1-100"));
+    }
+
+    const sketchTxt = document.querySelector("section > p");
+    sketchTxt.textContent += ` [ ${size} x ${size} ]`;
+
+    generateSketchPad(size);
+    console.log(`SIZE_FACTOR == ${size_factor}`);
+});
+
+generateSketchPad();

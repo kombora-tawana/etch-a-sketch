@@ -13,8 +13,8 @@ body {
 }
 
 main {
-    width: 80vw;
-    height: 80vh;
+    width: 700px;
+    height: 700px;
     padding: 40px;
 
     display: flex;
@@ -26,29 +26,27 @@ main {
 
 section {
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: center;
-    flex: 2;
 }
 
 .canvas {
+    display: flex;
     flex-wrap: wrap;
-    align-self: stretch;
-    flex: 10;
-    padding: 2.5px;
-    outline: 2.5px double black;
+
+    width: 100%;
+    height: 100%;
+
     border-radius: 10px;
+    overflow: auto;
+
+    outline: 2.5px double black;
 }
 
 .canvas > div {
-    flex: 1 1 auto;
+    flex: 1 0 auto;
 
-    width: 6%;
-    height: 6%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
 }
 
 .canvas > .hover {
