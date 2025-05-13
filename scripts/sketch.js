@@ -24,7 +24,7 @@ function generateSketchPad(size_factor = 16) {
         tile.addEventListener("mouseleave", () => {
             setTimeout(() => {
                 tile.classList.remove("hover");
-            }, 3500);
+            }, 7500);
         });
         canvas.appendChild(tile);
     }
@@ -38,7 +38,7 @@ sizeBtn.addEventListener("click", () => {
     }
 
     const sketchTxt = document.querySelector("section > p");
-    sketchTxt.textContent += ` [ ${size} x ${size} ]`;
+    sketchTxt.textContent = `sketchpad : [ ${size} x ${size} ]`;
 
     generateSketchPad(size);
     console.log(`SIZE_FACTOR == ${size_factor}`);
