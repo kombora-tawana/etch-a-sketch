@@ -28,6 +28,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .canvas {
@@ -45,13 +46,14 @@ section {
 
 .canvas > div {
     flex: 1 0 auto;
-
     text-align: center;
+    transition: background-color 0.5s ease-out;
 }
 
 .canvas > .hover {
     color: #fff;
     background-color: #000;
+    transition: background-color 0.5s ease-in;
 }
 
 .sizeBtn {
